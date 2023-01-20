@@ -128,7 +128,7 @@ equalsButton.addEventListener('click', function(event){
          num1 = (+num1) * (+num2);
       break;
       case '/':                                                
-         if (num2 === '0') {                                                                 
+         if (num2 === '0' || num2 == '0.') {                                                                 
             display.textContent = 'Ошибка'
             num1 = '';
             num2 = '';
@@ -140,10 +140,10 @@ equalsButton.addEventListener('click', function(event){
    }
       display.textContent = num1;  
       result = true;    
-      if (display.textContent.length > 8 && display.textContent.includes('.')) {                 
-         display.textContent = num1.toFixed(2);
-         return
-      }      
+      // if (display.textContent.length > 8 && display.textContent.includes('.')) {                 
+      //    display.textContent = num1.toFixed(2);
+      //    return
+      // }      
 });
 
 sign.addEventListener('click', function(event) {
