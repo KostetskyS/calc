@@ -117,6 +117,9 @@ for (let operationButton of operationButtons) {
 }
 
 equalsButton.addEventListener('click', function(event){
+   if(num1 !== '' && num2 == '' ) {
+      return
+   }
    switch(operation) {
       case '+':
          num1 = (+num1) + (+num2);
@@ -138,13 +141,17 @@ equalsButton.addEventListener('click', function(event){
          num1 = (+num1) / (+num2);
       break;
    }
-      display.textContent = num1;  
-      result = true;    
-      // if (display.textContent.length > 8 && display.textContent.includes('.')) {                 
-      //    display.textContent = num1.toFixed(2);
-      //    return
-      // }      
+      result = true;
+      roundAfterCome(num1);
 });
+
+const roundAfterCome = (number) => {
+   if (`${number}`.length > 8) {
+      display.textContent = number.toExponential();
+      return
+   }
+   display.textContent = number;
+}
 
 sign.addEventListener('click', function(event) {
    if (num2 == '' && operation == '') {
@@ -172,6 +179,9 @@ percentButton.addEventListener('click', function(event) {
 });
 
 display.addEventListener('click', function(event){
+   if (display.textContent === "0") {
+      return
+   }
    if (num2 == '' && operation == '') {
       num1 = display.textContent.slice(0, -1);
       display.textContent = num1;
